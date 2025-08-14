@@ -1,0 +1,90 @@
+{
+  "name": "syntropic",
+  "displayName": "Syntropic: Interactive Source-to-Prompt generator",
+  "description": "Interactive Source-to-Prompt generator",
+  "publisher": "RoderickGrc",
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onView:syntropicEnhancedExplorerView",
+    "onViewContainer:enhancedExplorer"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "enhancedExplorer",
+          "title": "Syntropic (Beta)",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "enhancedExplorer": [
+        {
+          "type": "webview",
+          "id": "syntropicEnhancedExplorerView",
+          "name": "Source→Prompt",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Syntropic Configuration",
+      "properties": {
+        "syntropic.textExtensionsWhitelist": {
+          "type": "string",
+          "default": "adoc,asciidoc,asm,bib,bash,bat,cfg,clj,cljc,cljs,coffee,conf,config,csv,dart,diff,env,erl,ex,exs,fs,fsx,gitignore,gitattributes,gradle,graphql,gql,groovy,h,hh,hpp,hs,html,ini,java,js,jsx,json,json5,jsonl,kt,kts,less,lua,md,mdx,markdown,mk,patch,php,pl,properties,proto,py,r,rmd,rst,rs,sass,scss,css,sh,sql,svg,swift,tex,toml,ts,tsx,tsv,vb,xml,xsd,yaml,yml,zsh,txt,c,cpp,cc,cxx,cs,go,rb,scala,pm,tcl,ps1,psm1,psd1,vbs,d,nim,zig,cr,elm,purs,f,for,f90,f95,ada,adb,ads,cob,cbl,lisp,lsp,scm,v,sv,svh,vhdl,vhd,m,mm,jsonc,ron,plist,cnf,service,desktop,dockerfile,tf,tfvars,hcl,nginxconf,apacheconf,reg,tfstate,csproj,vbproj,fsproj,sln,xproj,props,targets,bt,htm,xhtml,ejs,hbs,mustache,pug,haml,slim,liquid,tpl,twig,blade.php,vue,svelte,astro,aspx,ascx,master,cshtml,vbhtml,jsp,tag,log,srt,vtt,sub,po,pot,sty,cls,rtf,sgml,opml,dot,gv,kml,gpx,GPX,plantuml,puml,pu,mermaid,mmd,xaml,glsl,frag,vert,geom,tesc,tese,comp,hlsl,fx,shader,cg,metal,gitmodules,npmrc,yarnrc,editorconfig,babelrc,eslintrc,prettierrc,browserslistrc,manifest,settings.gradle,build.gradle.kts,gradlew,gradlew.bat,sbt,pom.xml,Makefile,CMakeLists.txt,cmake,def,idl,iss,nsi,nsh,applescript,scpt,ddl,dml,pdf",
+          "description": "Comma-separated list of file extensions considered as text files for content generation."
+        },
+        "syntropic.blacklistNames": {
+          "type": "string",
+          "default": "node_modules,.git,.vscode,target,dist,build,bin,obj,out,coverage,temp,tmp,log,logs,vendor,venv,env,backup,backups,node_modules,.git,.vscode,target,dist,build,bin,obj,out,coverage,temp,tmp,log,logs,vendor,venv,env,backup,backups,.sync,__pycache__,.pytest_cache,tempCodeRunnerFile,tempCodeRunnerFile.bat",
+          "description": "Comma-separated list of file/folder names to exclude from the explorer."
+        },
+        "syntropic.maxFolderItemsDisplay": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of items to display in a folder within the explorer tree."
+        },
+        "syntropic.readRetryCount": {
+          "type": "number",
+          "default": 1,
+          "description": "Number of retries when reading a file fails."
+        },
+        "syntropic.readRetryDelay": {
+          "type": "number",
+          "default": 300,
+          "description": "Delay in milliseconds between file read retries."
+        },
+        "syntropic.enableTokenCounting": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable or disable token counting for content generation."
+        }
+      }
+    }
+  },
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/RoderickGrc/syntropic.git"
+},
+  "scripts": {
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@dqbd/tiktoken": "^1.0.18",
+    "pdfjs-dist": "4.4.168",
+    "canvas": "^3.1.0",
+    "dommatrix": "^1.0.3"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.29.0"
+  }
+}

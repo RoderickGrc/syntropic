@@ -1,0 +1,172 @@
+body {
+    font-family: var(--vscode-font-family);
+    color: var(--vscode-editor-foreground);
+    background-color: var(--vscode-editor-background);
+    padding: 5px;
+    margin: 0;
+    overflow-y: auto; /* Permitir scroll vertical si el contenido es muy largo */
+}
+
+.tree {
+    font-size: var(--vscode-font-size);
+    margin-bottom: 10px;
+}
+
+.tree ul {
+    list-style-type: none;
+    padding-left: 15px; /* Aumentar un poco para mejor visualización */
+    margin: 0;
+}
+
+.tree li {
+    margin: 0;
+    padding: 2px 4px; /* Añadir un poco de padding para el hover y la selección */
+    position: relative;
+    list-style: none;
+    border-radius: 3px; /* Bordes redondeados para un look más suave */
+    transition: background-color 0.15s ease-in-out; /* Transición suave para el hover */
+}
+
+.tree li:hover {
+    background-color: var(--vscode-list-hoverBackground);
+}
+
+.tree li.selected {
+    background-color: var(--vscode-list-activeSelectionBackground);
+    color: var(--vscode-list-activeSelectionForeground);
+}
+
+.tree li.selected .icon {
+    fill: var(--vscode-list-activeSelectionForeground); /* Asegurar que el ícono también cambie de color */
+}
+
+.node-label {
+    cursor: pointer; /* Indicar que la etiqueta es clickeable */
+}
+
+.toggle, .spacer {
+    display: inline-block;
+    width: 1.5em;
+    text-align: center;
+    cursor: pointer;
+    margin-right: 2px;
+    vertical-align: middle; /* Alinear íconos verticalmente */
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle; /* Alinear con el texto */
+    fill: currentColor;
+}
+
+.toggle:hover, .eye-toggle:hover {
+    opacity: 0.7;
+}
+
+.checkbox {
+    margin-right: 5px;
+    vertical-align: middle; /* Alinear mejor con el texto */
+}
+
+.eye-toggle {
+    cursor: pointer;
+    display: inline-block; /* Para que el margen funcione */
+    min-width: 1.5em; /* Ancho similar al toggle para alineación */
+    text-align: center;
+    margin-right: 2px; /* Espacio antes del nombre del nodo */
+}
+
+.node-label.hidden-in-output {
+    opacity: 0.5; /* O text-decoration: line-through; */
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+#output-controls {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex; /* Para alinear botones y contador */
+    align-items: center; /* Alinear verticalmente */
+    gap: 10px; /* Espacio entre elementos */
+}
+
+button {
+    background-color: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: 1px solid var(--vscode-button-border, transparent);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 2px; /* Bordes ligeramente redondeados */
+}
+
+button:hover {
+    background-color: var(--vscode-button-hoverBackground);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#outputText {
+    width: calc(100% - 10px); /* Restar padding para que no se desborde */
+    height: 200px;
+    margin-top: 5px;
+    font-family: var(--vscode-editor-font-family); /* Usar fuente del editor */
+    font-size: var(--vscode-editor-font-size);   /* Usar tamaño de fuente del editor */
+    background-color: var(--vscode-text-area-background, var(--vscode-input-background));
+    color: var(--vscode-input-foreground);
+    border: 1px solid var(--vscode-input-border, var(--vscode-contrastBorder, transparent));
+    padding: 5px;
+    box-sizing: border-box; /* Asegura que padding y border no aumenten el tamaño total */
+}
+
+h1, h2 {
+    font-size: 1.2em; /* Un poco más grande que el texto base */
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold; /* Títulos en negrita */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--vscode-editor-widget-border, var(--vscode-contrastBorder));
+    margin: 10px 0;
+}
+
+p#charCount {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+.error-message {
+    color: var(--vscode-errorForeground);
+    padding: 10px;
+    border: 1px solid var(--vscode-inputValidation-errorBorder);
+    background-color: var(--vscode-inputValidation-errorBackground);
+}
+
+/* Estilos para el título y el botón de recarga */
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px; /* Espacio antes del árbol */
+}
+
+.title-bar h1 {
+    margin: 0; /* Remover margen por defecto del h1 para mejor alineación */
+}
+
+.reload-icon {
+    cursor: pointer;
+    font-size: 1em; /* Ajustar según sea necesario, 1em debería ser similar al H1 */
+    padding: 0 5px; /* Algo de padding para que sea más fácil clickear */
+}
+
+.reload-icon:hover {
+    opacity: 0.7;
+}

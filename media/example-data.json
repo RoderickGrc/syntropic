@@ -1,0 +1,69 @@
+{
+  "workspaceName": "demo-project",
+  "tree": {
+    "name": "demo-project",
+    "type": "folder",
+    "children": [
+      { "name": "src", "type": "folder", "children": [
+        { "name": "index.ts", "type": "file", "path": "src/index.ts" },
+        { "name": "app.tsx", "type": "file", "path": "src/app.tsx" },
+        { "name": "utils.ts", "type": "file", "path": "src/utils.ts" },
+        { "name": "components", "type": "folder", "children": [
+          { "name": "Card.tsx", "type": "file", "path": "src/components/Card.tsx" },
+          { "name": "Button.tsx", "type": "file", "path": "src/components/Button.tsx" }
+        ]}
+      ]},
+      { "name": "README.md", "type": "file", "path": "README.md" },
+      { "name": ".env", "type": "file", "path": ".env" },
+      { "name": "package.json", "type": "file", "path": "package.json" },
+      { "name": "docs", "type": "folder", "children": [
+        { "name": "architecture.md", "type": "file", "path": "docs/architecture.md" },
+        { "name": "api.md", "type": "file", "path": "docs/api.md" }
+      ]}
+    ]
+  },
+  "output": {
+    "folderTree": "demo-project/\n├── README.md\n├── package.json\n├── .env\n├── src/\n│   ├── index.ts\n│   ├── app.tsx\n│   ├── utils.ts\n│   └── components/\n│       ├── Card.tsx\n│       └── Button.tsx\n└── docs/\n    ├── architecture.md\n    └── api.md\n",
+    "files": [
+      {
+        "displayPath": "demo-project/src/index.ts",
+        "language": "ts",
+        "numbered": true,
+        "content": "01  import { createRoot } from 'react-dom/client'\n02  import { App } from './app'\n03  createRoot(document.getElementById('root')!).render(<App />)\n"
+      },
+      {
+        "displayPath": "demo-project/src/utils.ts",
+        "language": "ts",
+        "numbered": false,
+        "content": "export function formatDate(d: Date){ return d.toISOString() }\n"
+      },
+      {
+        "displayPath": "demo-project/README.md",
+        "language": "md",
+        "numbered": true,
+        "content": "01  # Demo Project\n02  This is a demo.\n"
+      },
+      {
+        "displayPath": "demo-project/.env",
+        "language": "dotenv",
+        "numbered": false,
+        "content": "# CENSORED BY PROTOTYPE\n********\n"
+      },
+      {
+        "displayPath": "demo-project/docs/architecture.md",
+        "language": "md",
+        "numbered": false,
+        "content": "System architecture overview...\n"
+      }
+    ],
+    "diagnostics": [
+      { "file": "src/app.tsx", "line": 42, "severity": "error", "message": "No overload matches this call" },
+      { "file": "src/utils.ts", "line": 10, "severity": "warning", "message": "Deprecated API" },
+      { "file": "src/index.ts", "line": 2, "severity": "info", "message": "Consider splitting imports" }
+    ],
+    "terminals": [
+      { "name": "Syntropic: build", "content": "> npm run build\n...compiled successfully" },
+      { "name": "Syntropic: tests", "content": "> npm test\n...all tests passed" }
+    ]
+  }
+} 

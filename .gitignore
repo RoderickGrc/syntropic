@@ -1,0 +1,6 @@
+
+.filecommand/
+node_modules/
+*.vsix
+out/
+dist/
