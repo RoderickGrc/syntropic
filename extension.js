@@ -18,16 +18,14 @@ function activate(context) {
     logWithTimestamp("Syntropic[Ext]: Context subscriptions will be pushed here.");
 
     const config = vscode.workspace.getConfiguration('syntropic');
-    const readGlobal = (key, def) => {
-        const inspected = config.inspect(key);
-        return inspected && inspected.globalValue !== undefined ? inspected.globalValue : def;
-    };
-    const textExtensionsWhitelist = readGlobal('textExtensionsWhitelist', '');
-    const blacklistNames = readGlobal('blacklistNames', '');
-    const maxFolderItemsDisplay = readGlobal('maxFolderItemsDisplay', 50);
-    const readRetryCount = readGlobal('readRetryCount', 1);
-    const readRetryDelay = readGlobal('readRetryDelay', 300);
-    const enableTokenCounting = readGlobal('enableTokenCounting', false);
+    // Use get() to honor defaults from package.json for new users
+    const readEffective = (key, def) => config.get(key, def);
+    const textExtensionsWhitelist = readEffective('textExtensionsWhitelist', '');
+    const blacklistNames = readEffective('blacklistNames', '');
+    const maxFolderItemsDisplay = readEffective('maxFolderItemsDisplay', 50);
+    const readRetryCount = readEffective('readRetryCount', 1);
+    const readRetryDelay = readEffective('readRetryDelay', 300);
+    const enableTokenCounting = readEffective('enableTokenCounting', false);
 
     const initialSettings = {
         textExtensionsWhitelist,

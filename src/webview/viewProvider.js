@@ -226,17 +226,15 @@ class EnhancedExplorerViewProvider {
 
     getSettingsFromConfig() {
         const config = vscode.workspace.getConfiguration('syntropic');
-        const readGlobal = (key, def) => {
-            const inspected = config.inspect(key);
-            return inspected && inspected.globalValue !== undefined ? inspected.globalValue : def;
-        };
+        // Use get() so new users receive defaults declared in package.json
+        const readEffective = (key, def) => config.get(key, def);
         return {
-            textExtensionsWhitelist: readGlobal('textExtensionsWhitelist', ''),
-            blacklistNames: readGlobal('blacklistNames', ''),
-            maxFolderItemsDisplay: readGlobal('maxFolderItemsDisplay', 50),
-            readRetryCount: readGlobal('readRetryCount', 1),
-            readRetryDelay: readGlobal('readRetryDelay', 300),
-            enableTokenCounting: readGlobal('enableTokenCounting', false)
+            textExtensionsWhitelist: readEffective('textExtensionsWhitelist', ''),
+            blacklistNames: readEffective('blacklistNames', ''),
+            maxFolderItemsDisplay: readEffective('maxFolderItemsDisplay', 50),
+            readRetryCount: readEffective('readRetryCount', 1),
+            readRetryDelay: readEffective('readRetryDelay', 300),
+            enableTokenCounting: readEffective('enableTokenCounting', false)
         };
     }
 

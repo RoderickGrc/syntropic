@@ -57,8 +57,8 @@ class ExplorerService {
 
     isBlacklisted(name) {
         const config = vscode.workspace.getConfiguration('syntropic');
-        const inspected = config.inspect('blacklistNames');
-        const blacklistNames = inspected && inspected.globalValue !== undefined ? inspected.globalValue : '';
+        // Use get() so the contributed default applies for first-time users
+        const blacklistNames = config.get('blacklistNames', '');
         const blacklist = blacklistNames.split(',').map(s => s.trim()).filter(s => s.length > 0);
         return blacklist.includes(name);
     }
